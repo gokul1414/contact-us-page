@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+	<title>Contact Us</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="{% static 'images/web-icon.png' %}" type="png">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	
+</head>
+<body>
+	
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<span id="submit-icon"style="display:none;" >
+					<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
+  				    <lottie-player src="https://lottie.host/e68bdcd8-ba6f-479a-ba88-5f4f944d89fa/DMYPlnMpAY.json" background="transparent" speed=".5" style="width: 500px; height: 500px;" loop autoplay></lottie-player>
+				</span>
+				<span id="sub-btn">
+					<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
+					<lottie-player src="https://lottie.host/0c296bf5-1be3-42a7-bc84-1da0df6230c0/wHU6zS44K0.json" background="transparent" speed=".8" style="width: 600px; height: 600px;" loop autoplay></lottie-player>
+					   <center>
+						<!-- <div class="admin-btn"> -->
+							<a href="{% url 'login' %}" target="blank" class="" type="button">ADMIN LOGIN</a>
+						<!-- </div> -->
+					</center>
+				</span>
+				
+				
+
+			</div>
+			<form class="contact1-form validate-form" id="contact-form" action="{% url 'home' %}" method="post" enctype="multipart/form-data" role="form" onsubmit="return validateForm();" >
+				{% csrf_token %}
+				<span class="contact1-form-title heading">
+					Get in touch
+				</span>
+
+				<div class="wrap-input1 validate-input" >
+					<input class="input1" type="text" name="firstname" placeholder="FirstName" class="form-control is-invalid"   id="id_firstname" maxlength="20" autocomplete="off" >
+					<span class="shadow-input1"></span>
+					<span class="error" id="firstNameError"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input">
+					<input class="input1" type="text" name="lastname" placeholder="Lastname" class="form-control is-invalid"  maxlength="10" id="id_lastname" autocomplete="off">
+					<span class="shadow-input1"></span>
+					<span class="error" id="lastNameError"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input">
+					<input class="input1" type="email" name="email" placeholder="Email" class="form-control is-invalid"   id="id_email" autocomplete="off">
+					<span class="shadow-input1"></span>
+					<span class="error" id="emailError"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input">
+					<input class="input1 num-int" type="number" control="off" name="phonenumber" placeholder="Phonenumber" class="form-control is-invalid num-btn"    maxlength="10"  id="id_phonenumber"  autocomplete="off">
+					<span class="shadow-input1"></span>
+					<span class="error" id="phoneNumberError"></span>
+				</div>
+
+				
+
+				<div class="wrap-input1 validate-input">
+					<textarea class="input1" name="message" id="id_message"  class="form-control is-invalid"  cols="40" rows="10"  autocomplete="off" placeholder="Message"></textarea>
+					<span class="shadow-input1"></span>
+					<span class="error" id="messageError"></span>
+				</div>
+				
+
+				<div class="container-contact1-form-btn">
+					<button class="contact1-form-btn" type="submit" >
+							Submit
+					</button>
+
+					<!-- <br> -->
+
+					
+				</div>
+				<br>
+			
+
+			</form>
+		</div>
+	</div>
+
+	
+
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

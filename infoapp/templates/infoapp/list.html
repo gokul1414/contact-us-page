@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    
+    
+    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;" id="top">Contact Information</h1>
+    
+    <!-- Search section  -->
+    <div class="center-form" style="display: flex; justify-content: center;">
+        <form action="{% url 'admin-page' %}" method="GET" style="width: 500px;">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search by  name, email, or mobile" aria-label="" aria-describedby="basic-addon1" style="margin-right: 10px;"
+                name="search_query" value="{{ search_query }}"/>
+                
+                <input class="btn btn-success" type="submit" value="Search"/>
+            </div>
+            <div class="btns">
+                <a href="#bottom-page"><button type="button" class="btn btn-dark">Go to Bottom</button></a>
+                <a href= "https://docs.google.com/spreadsheets/d/1ALBHnTriEfSUFcsHu8EZDV-Emf756_B4RrCrisiJjhw/edit?usp=share_link" class="btn btn-success" download >Google Sheeet View</a>
+                <a href="{% url 'logout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
+
+            </div>
+
+        </form>
+    </div>
+    <hr>
+    
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Phonenumber</th>
+                <th scope="col">Email</th>
+                <th scope="col">Message</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+            <tr>
+                
+                <th scope="row">{{ emp.firstname }}</th>
+                <td>{{ emp.lastname }}</td>
+                <td>{{ emp.phonenumber }}</td>
+                <td>{{ emp.email}}</td>
+                <td>{{ emp.message }}</td>
+                <td>
+                    <a style="margin-right: 30px;" href="{% url 'edit-data' emp.id %}" type="button" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete-data' emp.id %}" type="button" class="btn btn-danger">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="text-center" id="bottom-page">
+        <a href="#top"><button type="button" class="btn btn-dark">Go to Top</button></a>
+
+        <a href="{% url 'home' %}"><button type="button" class="btn btn-info">Add New Info</button></a>
+       <center>
+           <a href="{% url 'logout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
+
+       </center> 
+
+    </div>
+    <hr>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
